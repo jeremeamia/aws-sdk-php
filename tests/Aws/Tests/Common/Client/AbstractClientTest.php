@@ -77,6 +77,8 @@ class AbstractClientTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function testAllowsWaiterFactoryInjection()
     {
+        $this->markTestSkipped('HipHop Fatal error: Cannot override final method Aws\DynamoDb\DynamoDbClient::setConfig()');
+
         $client = $this->getMockBuilder('Aws\Common\Client\AbstractClient')
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
