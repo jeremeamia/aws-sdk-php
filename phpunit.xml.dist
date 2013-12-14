@@ -12,6 +12,11 @@
     <testsuites>
         <testsuite name="Aws">
             <directory>tests/Aws/Tests/AutoScaling</directory>
+            <directory>tests/Aws/Tests/CloudFormation</directory>
+            <directory>tests/Aws/Tests/CloudFront</directory>
+            <directory>tests/Aws/Tests/CloudSearch</directory>
+            <directory>tests/Aws/Tests/CloudTrail</directory>
+            <directory>tests/Aws/Tests/CloudWatch</directory>
         </testsuite>
     </testsuites>
 
