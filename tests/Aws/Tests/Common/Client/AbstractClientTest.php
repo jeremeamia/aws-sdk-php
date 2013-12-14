@@ -75,43 +75,41 @@ class AbstractClientTest extends \Guzzle\Tests\GuzzleTestCase
         } catch (\Exception $e) {}
     }
 
-//    public function testAllowsWaiterFactoryInjection()
-//    {
-//        $this->markTestSkipped('HipHop Fatal error: Cannot override final method Aws\DynamoDb\DynamoDbClient::setConfig()');
-//
-//        $client = $this->getMockBuilder('Aws\Common\Client\AbstractClient')
-//            ->disableOriginalConstructor()
-//            ->getMockForAbstractClass();
-//
-//        $waiter = $this->getMockBuilder('Aws\Common\Waiter\ResourceWaiterInterface')
-//            ->setMethods(array('wait', 'setResource', 'setConfig', 'setClient'))
-//            ->getMockForAbstractClass();
-//
-//        $waiter->expects($this->once())
-//            ->method('wait')
-//            ->will($this->returnValue($client));
-//
-//        $waiter->expects($this->once())
-//            ->method('setConfig')
-//            ->will($this->returnValue($waiter));
-//
-//        $waiter->expects($this->once())
-//            ->method('setClient')
-//            ->will($this->returnValue($waiter));
-//
-//        $factory = $this->getMockBuilder('Aws\Common\Waiter\WaiterFactoryInterface')
-//            ->setMethods(array('build', 'canBuild'))
-//            ->getMock();
-//
-//        $factory->expects($this->once())
-//            ->method('build')
-//            ->will($this->returnValue($waiter));
-//
-//        $client->setWaiterFactory($factory);
-//        $this->assertSame($factory, $client->getWaiterFactory());
-//
-//        $this->assertSame($client, $client->waitUntil('foo', array('baz' => 'bar')));
-//    }
+    public function testAllowsWaiterFactoryInjection()
+    {
+        $client = $this->getMockBuilder('Aws\Common\Client\AbstractClient')
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $waiter = $this->getMockBuilder('Aws\Common\Waiter\ResourceWaiterInterface')
+            ->setMethods(array('wait', 'setResource', 'setConfig', 'setClient'))
+            ->getMockForAbstractClass();
+
+        $waiter->expects($this->once())
+            ->method('wait')
+            ->will($this->returnValue($client));
+
+        $waiter->expects($this->once())
+            ->method('setConfig')
+            ->will($this->returnValue($waiter));
+
+        $waiter->expects($this->once())
+            ->method('setClient')
+            ->will($this->returnValue($waiter));
+
+        $factory = $this->getMockBuilder('Aws\Common\Waiter\WaiterFactoryInterface')
+            ->setMethods(array('build', 'canBuild'))
+            ->getMock();
+
+        $factory->expects($this->once())
+            ->method('build')
+            ->will($this->returnValue($waiter));
+
+        $client->setWaiterFactory($factory);
+        $this->assertSame($factory, $client->getWaiterFactory());
+
+        $this->assertSame($client, $client->waitUntil('foo', array('baz' => 'bar')));
+    }
 
     public function testClientUpperCasesMagicMethodCallsToCommands()
     {
