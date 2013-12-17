@@ -14,20 +14,23 @@
  * permissions and limitations under the License.
  */
 
-namespace Aws\Tests\CloudFront\Waiter;
+namespace Aws\Tests\CloudFront\Integration\Waiter;
 
 use Guzzle\Http\Message\Response;
 
-class StreamingDistributionDeployedTest extends \Guzzle\Tests\GuzzleTestCase
+/**
+ * @group integration
+ */
+class DistributionDeployedTest extends \Guzzle\Tests\GuzzleTestCase
 {
     public function testReturnsTrueIfDeployed()
     {
         $client = $this->getServiceBuilder()->get('cloudfront');
         $this->setMockResponse($client, array(
-            'cloudfront/GetStreamingDistribution_InProgress',
-            'cloudfront/GetStreamingDistribution_Deployed'
+            'cloudfront/GetDistribution_InProgress',
+            'cloudfront/GetDistribution_Deployed'
         ));
-        $client->waitUntil('streaming_distribution_deployed', array('Id' => 'foo', 'waiter.interval' => 0));
+        $client->waitUntil('distribution_deployed', array('Id' => 'bar', 'waiter.interval' => 0));
     }
 
     /**
@@ -37,6 +40,6 @@ class StreamingDistributionDeployedTest extends \Guzzle\Tests\GuzzleTestCase
     {
         $client = $this->getServiceBuilder()->get('cloudfront');
         $this->setMockResponse($client, array(new Response(404)));
-        $client->waitUntil('streaming_distribution_deployed', array('Id' => 'foo'));
+        $client->waitUntil('distribution_deployed', array('Id' => 'bar'));
     }
 }

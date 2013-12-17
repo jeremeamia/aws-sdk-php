@@ -127,10 +127,10 @@ class LogFileIteratorTest extends \Guzzle\Tests\GuzzleTestCase
         <Key>AWSLogs/12345/CloudTrail/us-east-1/2013/11/28/foo-20131128T1822Z-log.json.gz</Key>
     </Contents>
     <Contents>
-        <Key>AWSLogs/12345/CloudTrail/us-east-1/2013/12/01/foo-20131129T0311Z-log.json.gz</Key>
+        <Key>AWSLogs/12345/CloudTrail/us-east-1/2013/11/29/foo-20131129T0311Z-log.json.gz</Key>
     </Contents>
     <Contents>
-        <Key>AWSLogs/12345/CloudTrail/us-east-1/2013/12/01/foo-20131225T0000Z-log.json.gz</Key>
+        <Key>AWSLogs/12345/CloudTrail/us-east-1/2013/12/25/foo-20131225T0000Z-log.json.gz</Key>
     </Contents>
 </ListBucketResult>
 XML;

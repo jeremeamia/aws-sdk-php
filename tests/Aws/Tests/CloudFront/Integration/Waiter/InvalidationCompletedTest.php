@@ -14,20 +14,38 @@
  * permissions and limitations under the License.
  */
 
-namespace Aws\Tests\CloudFront\Waiter;
+namespace Aws\Tests\CloudFront\Integration\Waiter;
 
 use Guzzle\Http\Message\Response;
 
-class DistributionDeployedTest extends \Guzzle\Tests\GuzzleTestCase
+/**
+ * @group integration
+ */
+class InvalidationCompletedTest extends \Guzzle\Tests\GuzzleTestCase
 {
+    /**
+     * @expectedException \Aws\Common\Exception\InvalidArgumentException
+     */
+    public function testValidatesInvalidationResource()
+    {
+        $client = $this->getServiceBuilder()->get('cloudfront');
+        $client->waitUntil('InvalidationCompleted', array('Id' => 'foo'));
+    }
+
     public function testReturnsTrueIfDeployed()
     {
         $client = $this->getServiceBuilder()->get('cloudfront');
         $this->setMockResponse($client, array(
-            'cloudfront/GetDistribution_InProgress',
-            'cloudfront/GetDistribution_Deployed'
+            'cloudfront/GetInvalidation_InProgress',
+            'cloudfront/GetInvalidation_Completed'
         ));
-        $client->waitUntil('distribution_deployed', array('Id' => 'bar', 'waiter.interval' => 0));
+        $client->waitUntil(
+            'InvalidationCompleted',
+            array('DistributionId' => 'foo', 'Id' => 'bar', 'waiter.interval' => 0)
+        );
+        $requests = $this->getMockedRequests();
+        $this->assertEquals(2, count($requests));
+        $this->assertContains('/distribution/foo/invalidation/bar', $requests[0]->getUrl());
     }
 
     /**
@@ -37,6 +55,6 @@ class DistributionDeployedTest extends \Guzzle\Tests\GuzzleTestCase
     {
         $client = $this->getServiceBuilder()->get('cloudfront');
         $this->setMockResponse($client, array(new Response(404)));
-        $client->waitUntil('distribution_deployed', array('Id' => 'bar'));
+        $client->waitUntil('invalidation_completed', array('DistributionId' => 'foo', 'Id' => 'bar'));
     }
 }
