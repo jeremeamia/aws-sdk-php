@@ -9,16 +9,43 @@
          convertWarningsToExceptions="true"
          testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
 
-    <testsuites>
-        <testsuite name="Aws">
-            <directory>tests/Aws/Tests/AutoScaling</directory>
-            <directory>tests/Aws/Tests/CloudFormation</directory>
-            <directory>tests/Aws/Tests/CloudFront</directory>
-            <directory>tests/Aws/Tests/CloudSearch</directory>
-            <directory>tests/Aws/Tests/CloudTrail</directory>
-            <directory>tests/Aws/Tests/CloudWatch</directory>
-        </testsuite>
-    </testsuites>
+  <testsuites>
+      <testsuite name="Aws">
+          <directory>tests/Aws/Tests/AutoScaling</directory>
+          <directory>tests/Aws/Tests/CloudFormation</directory>
+          <directory>tests/Aws/Tests/CloudFront</directory>
+          <directory>tests/Aws/Tests/CloudSearch</directory>
+          <directory>tests/Aws/Tests/CloudTrail</directory>
+          <directory>tests/Aws/Tests/CloudWatch</directory>
+          <!--<directory>tests/Aws/Tests/Common</directory>-->
+          <directory>tests/Aws/Tests/DataPipeline</directory>
+          <directory>tests/Aws/Tests/DirectConnect</directory>
+          <!--<directory>tests/Aws/Tests/DynamoDb</directory>-->
+          <!--<directory>tests/Aws/Tests/Ec2</directory>-->
+          <directory>tests/Aws/Tests/ElastiCache</directory>
+          <directory>tests/Aws/Tests/ElasticBeanstalk</directory>
+          <directory>tests/Aws/Tests/ElasticLoadBalancer</directory>
+          <directory>tests/Aws/Tests/ElasticTranscoder</directory>
+          <directory>tests/Aws/Tests/Emr</directory>
+          <!--<directory>tests/Aws/Tests/Glacier</directory>-->
+          <directory>tests/Aws/Tests/Iam</directory>
+          <directory>tests/Aws/Tests/ImportExport</directory>
+          <directory>tests/Aws/Tests/Kinesis</directory>
+          <directory>tests/Aws/Tests/OpsWorks</directory>
+          <directory>tests/Aws/Tests/Rds</directory>
+          <directory>tests/Aws/Tests/Redshift</directory>
+          <directory>tests/Aws/Tests/Route53</directory>
+          <!--<directory>tests/Aws/Tests/S3</directory>-->
+          <directory>tests/Aws/Tests/Ses</directory>
+          <!--<directory>tests/Aws/Tests/SimpleDb</directory>-->
+          <directory>tests/Aws/Tests/Sns</directory>
+          <directory>tests/Aws/Tests/Sqs</directory>
+          <directory>tests/Aws/Tests/StorageGateway</directory>
+          <directory>tests/Aws/Tests/Sts</directory>
+          <directory>tests/Aws/Tests/Support</directory>
+          <directory>tests/Aws/Tests/Swf</directory>
+      </testsuite>
+  </testsuites>
 
     <!-- Exclude the integration tests in regular unit tests -->
     <groups>
