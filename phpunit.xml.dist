@@ -14,7 +14,9 @@
             <directory>tests/Aws/Tests</directory>
             <exclude>tests/Aws/Tests/Common/Client</exclude>
             <exclude>tests/Aws/Tests/Common/Credentials</exclude>
+            <exclude>tests/Aws/Tests/Common/Facade</exclude>
             <exclude>tests/Aws/Tests/Common/InstanceMetadata</exclude>
+            <exclude>tests/Aws/Tests/Common/Model</exclude>
             <exclude>tests/Aws/Tests/Common/Waiter</exclude>
             <exclude>tests/Aws/Tests/DynamoDb/Iterator</exclude>
             <exclude>tests/Aws/Tests/DynamoDb/Model/BatchRequest</exclude>
