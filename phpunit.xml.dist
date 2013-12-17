@@ -12,12 +12,15 @@
     <testsuites>
         <testsuite name="Aws">
             <directory>tests/Aws/Tests</directory>
+            <exclude>tests/Aws/Tests/Common/Client</exclude>
             <exclude>tests/Aws/Tests/Common/Credentials</exclude>
             <exclude>tests/Aws/Tests/Common/InstanceMetadata</exclude>
+            <exclude>tests/Aws/Tests/Common/Waiter</exclude>
             <exclude>tests/Aws/Tests/DynamoDb/Iterator</exclude>
             <exclude>tests/Aws/Tests/DynamoDb/Model/BatchRequest</exclude>
             <exclude>tests/Aws/Tests/DynamoDb/Session</exclude>
             <exclude>tests/Aws/Tests/DynamoDb/Waiter</exclude>
+            <exclude>tests/Aws/Tests/Ec2/WaiterTest.php</exclude>
             <exclude>tests/Aws/Tests/Glacier/Model</exclude>
             <exclude>tests/Aws/Tests/Glacier/Waiter</exclude>
             <exclude>tests/Aws/Tests/Rds/Waiter</exclude>
