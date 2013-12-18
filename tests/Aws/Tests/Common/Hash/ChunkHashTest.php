@@ -64,6 +64,10 @@ class ChunkHashTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function testCloneMakesCopyOfHashContext()
     {
+        if (!function_exists('hash_copy')) {
+            $this->markTestSkipped('hhvm doesn\'t seem to have the hash_copy function');
+        }
+
         $chunkHash1 = new ChunkHash('sha256');
         $chunkHash1->addData('foo');
 
