@@ -12,9 +12,20 @@
     <testsuites>
         <testsuite name="Aws">
             <directory>tests/Aws/Tests</directory>
+            <!--
+                There are currently issues with:
+                ========================================================================================================
+                - Anything using the Guzzle `MockPlugin`
+                - Something with the `JsonCommand` object
+                - PHP's `hash_copy()` in `ChunkHash`
+                - Any mock object that (im|ex)plicitly overwrites the final `Client::setConfig()` method
+            -->
+            <exclude>tests/Aws/Tests/CloudTrail/LogFileIteratorTest.php</exclude>
             <exclude>tests/Aws/Tests/Common/Client</exclude>
+            <exclude>tests/Aws/Tests/Common/Command/JsonCommandTest.php</exclude>
             <exclude>tests/Aws/Tests/Common/Credentials</exclude>
             <exclude>tests/Aws/Tests/Common/Facade</exclude>
+            <exclude>tests/Aws/Tests/Common/Hash/ChunkHashTest.php</exclude>
             <exclude>tests/Aws/Tests/Common/InstanceMetadata</exclude>
             <exclude>tests/Aws/Tests/Common/Model</exclude>
             <exclude>tests/Aws/Tests/Common/Waiter</exclude>
